@@ -1,111 +1,121 @@
 #include <cs50.h>
 #include <stdio.h>
-#define _XOPEN_SOURCE
-#include <unistd.h>
-#include <crypt.h>
 #include <string.h>
+#include <math.h>
 
-bool check_key(char** key);
-char* broken_code(char* arg[]);
+char* card_number();
+bool validity_test(char* card, int n);
+void provider(char* card, int n);
 
-int main(int argc, char* arg[])
+int main()
 {
-    bool validity=check_key(arg);
-    if (validity==false)
-    {
-        printf("Usage: ./caesar key\n");
-        return 1;
-    }
-    char* encrypted_message=broken_code(arg);
-    printf("%s\n", encrypted_message);
-    return 1;
+	char* card = card_number();
+	int n = strlen(card);
+	bool valid = validity_test(card, n);
+	if (valid == false)
+	{
+		printf("INVALID\n");
+		return 0;
+	}
+	else
+	{
+		provider(card, n);
+	}
+	//printf("%s %d\n", card, n);
+
 }
 
-bool check_key(char** key)
+char* card_number()
 {
-    if (key[1]==NULL)
-    {
-        return false;
-    }
-    int n=strlen(key[1]);
-    if(n!=13)
-    {
-        return false;
-    }
-    if (key[2]!=NULL)
-    {
-        return false;
-    }
-    return true;
+	static char number[200];
+	while (true)
+	{
+		printf("Please provide your card number:\n");
+		scanf("%s", number);
+		if (number[0]>47 && number[0]<58)
+		{
+			return number;
+		}
+	}
 }
-char* broken_code(char* arg[])
+
+bool validity_test(char* card, int n)
 {
-    char salt[2];
-    int s1=arg[1][0];
-    int s2=arg[1][1];
-    salt[0]=s1;
-    salt[1]=s2;
-    char pass[]="LOOL";
-    static char key[5];
-    for (int l5=65;l5<123;++l5)
-    {
-        if(l5>90&&l5<97)
-        {
-            continue;
-        }
-        for (int l4=65;l4<123;++l4)
-        {
-            if(l4>90&&l4<97)
-            {
-                continue;
-            }
-            for (int l3=65;l3<123;++l3)
-            {
-                if(l3>90&&l3<97)
-                {
-                    continue;
-                }    
-                for (int l2=65;l2<123;++l2)
-                {
-                    if(l2>90&&l2<97)
-                    {
-                        continue;
-                    }
-                    for (int l1=65;l1<123;++l1)
-                    {
-                        if(l1>90&&l1<97)
-                        {
-                            continue;
-                        }
-                        key[0]=l1;
-                        if (strcmp(crypt(key, salt),arg[1])==0)
-                        {
-                           return key;
-                        }
-                    }
-                    key[1]=l2;
-                    if (strcmp(crypt(key, salt),arg[1])==0)
-                    {
-                        return key;
-                    }
-                }
-                key[2]=l3;
-                if (strcmp(crypt(key, salt),arg[1])==0)
-                {
-                   return key;
-                }
-            }
-            key[3]=l4;
-            if (strcmp(crypt(key, salt),arg[1])==0)
-            {
-               return key;
-            }
-        }
-        key[4]=l5;
-        if (strcmp(crypt(key, salt),arg[1])==0)
-        {
-           return key;
-        }
-    }
-    return 0;
+	int k = n - 2;
+	int i = n - 1;
+	int sum1 = 0;
+	int sum2 = 0;
+	if (n>16)
+	{
+		return false;
+	}
+	while (k >= 0)
+	{
+		sum1 = sum1 + (((card[k] - 48) * 2) % 10) + (int)(((card[k] - 48) * 2) / 10);
+		k = k - 2;
+	}
+	while (i >= 0)
+	{
+		sum2 = sum2 + card[i] - 48;
+		i = i - 2;
+	}
+	int sum3 = sum2 + sum1;
+	if (sum3 % 10 == 0)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+void provider(char* card, int n)
+{
+	if (n == 15)
+	{
+		if (card[0] - 48 == 3 && card[1] - 48 == 7)
+		{
+			printf("AMEX\n");
+		}
+		else if (card[0] - 48 == 3 && card[1] - 48 == 4)
+		{
+			printf("AMEX\n");
+		}
+	}
+	if (n == 16)
+	{
+		if (card[0] - 48 == 5 && card[1] - 48 == 1)
+		{
+			printf("MASTERCARD\n");
+		}
+		else if (card[0] - 48 == 5 && card[1] - 48 == 2)
+		{
+			printf("MASTERCARD\n");
+		}
+		else if (card[0] - 48 == 5 && card[1] - 48 == 3)
+		{
+			printf("MASTERCARD\n");
+		}
+		else if (card[0] - 48 == 5 && card[1] - 48 == 4)
+		{
+			printf("MASTERCARD\n");
+		}
+		else if (card[0] - 48 == 5 && card[1] - 48 == 5)
+		{
+			printf("MASTERCARD\n");
+		}
+		else if (card[0] - 48 == 4)
+		{
+			printf("VISA\n");
+		}
+	}
+	if (n == 13 && card[0] == 4)
+	{
+		printf("VISA\n");
+	}
+	else
+	{
+		printf("INVALID\n");
+	}
 }
