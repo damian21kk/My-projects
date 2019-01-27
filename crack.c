@@ -13,7 +13,7 @@ int main(int argc, char* arg[])
     bool validity=check_key(arg);
     if (validity==false)
     {
-        printf("Usage: ./caesar key\n");
+        printf("Usage: ./crack\n");
         return 1;
     }
     char* encrypted_message=broken_code(arg);
