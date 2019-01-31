@@ -3,10 +3,9 @@ function [] = check_specific(Told)
 %   Detailed explanation goes here
         prompt = 'What event do you want to check?: ';
         while true
-            str = input(prompt,'s');
+            Event = input(prompt,'s');
             A=strcmp(str,Told.Event);
             if all(A==0)
-                fprintf('This event is not saved\n');
                 continue;  
             else
                 break;
