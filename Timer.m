@@ -7,7 +7,7 @@ str = input(prompt,'s');
 if (isempty(str)) || (str ~= "check") && (str ~= "new")
    return;
 elseif (str == "new") && exist('Timer.xlsx','file')
-    T=[Told;New_event()];
+    T=[Told;New_event(Told)];
     writetable(T,'Timer.xlsx');
 elseif (str == "new") && (exist('Timer.xlsx','file')~=1)
     T=new_table();

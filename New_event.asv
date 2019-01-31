@@ -1,13 +1,10 @@
-function [newcell] = New_event(Told)
+function [newcell] = New_event()
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 prompt = 'What is the event?: ';
+Event = input(prompt,'s');
 while true
-    Event = input(prompt,'s');
-    A=strcmp(Event,Told.Event);
-    if all(A==0)
-        break;        
-    end
+    
 end
 while true
         prompt = '\nWhat year?: ';
