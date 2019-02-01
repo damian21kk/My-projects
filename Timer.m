@@ -7,8 +7,12 @@ while true
     prompt = 'What do you want to do? \nNew event[new], Check event[check], Exit the program[exit], Delete data[delete]:\n ';
     str = input(prompt,'s');
     if (str == "exit")
-        clc;
-        return;
+        if exit_function()==true
+            clear;
+            return;
+        else
+            continue;
+        end
     elseif (isempty(str)) || (str ~= "exit") && (str ~= "check") && (str ~= "new") && (str ~= "delete")
         clc
         fprintf("Wrong command, please try again!\n");
