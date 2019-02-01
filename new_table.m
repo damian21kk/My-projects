@@ -1,6 +1,7 @@
 function [T] = new_table()
 %UNTITLED3 Summary of this function goes here
 %   Detailed explanation goes here
+datetime.setDefaultFormats('default','yyyy-MM-dd hh:mm:ss');
 while true
     prompt = 'What is the event?: ';
     Event = input(prompt,'s');
@@ -101,6 +102,7 @@ while true
             break;
         end
 end
-    T=table(Event,Year,Month,Day,Hour,Minutes);
+    Date = t2;
+    T=table(Event,Date);
 end
 

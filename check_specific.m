@@ -1,6 +1,7 @@
 function [] = check_specific(Told)
 %UNTITLED4 Summary of this function goes here
 %   Detailed explanation goes here
+datetime.setDefaultFormats('default','yyyy-MM-dd hh:mm:ss');
         while true
             prompt = 'What event do you want to check?: ';
             str = input(prompt,'s');

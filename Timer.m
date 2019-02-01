@@ -1,6 +1,7 @@
 clear
-if exist('Timer.xlsx','file')
-    Told = readtable('Timer.xlsx');
+datetime.setDefaultFormats('default','yyyy-MM-dd hh:mm:ss');
+if exist('Timer.txt','file')
+    Told = readtable('Timer.txt');
 end
 while true
     prompt = 'What do you want to do? \nNew event[new], Check event[check], Exit the program[exit], Delete data[delete]:\n ';
@@ -12,32 +13,35 @@ while true
         clc
         fprintf("Wrong command, please try again!\n");
         continue;
-    elseif (str == "delete") && exist('Timer.xlsx','file')
+    elseif (str == "delete") && exist('Timer.txt','file')
+        delete Timer.txt;
         delete Timer.xlsx;
         clear;
         clc
         continue;
-    elseif (str == "delete") && (exist('Timer.xlsx','file')==0)
+    elseif (str == "delete") && (exist('Timer.txt','file')==0)
         clc
         fprintf("No data saved\n");
         continue;
-    elseif (str == "new") && exist('Timer.xlsx','file')
+    elseif (str == "new") && exist('Timer.txt','file')
         T=[Told;New_event(Told)];
+        writetable(T,'Timer.txt');
         writetable(T,'Timer.xlsx');
-        T = readtable('Timer.xlsx');
+        T = readtable('Timer.txt');
         clc
         continue;
-    elseif (str == "new") && (exist('Timer.xlsx','file')==0)
+    elseif (str == "new") && (exist('Timer.txt','file')==0)
         T=new_table();
+        writetable(T,'Timer.txt');
         writetable(T,'Timer.xlsx');
-        T = readtable('Timer.xlsx');
+        T = readtable('Timer.txt');
         clc
         continue;
-    elseif (str == "check") && (exist('Timer.xlsx','file')==0)
+    elseif (str == "check") && (exist('Timer.txt','file')==0)
         clc
         fprintf('No data saved\n');
         continue;
-    elseif (str == "check") && exist('Timer.xlsx','file')
+    elseif (str == "check") && exist('Timer.txt','file')
         while true
             prompt = 'What do you want to do? show events[show], check specific events[specific]: ';
             str = input(prompt,'s');

@@ -1,8 +1,8 @@
 function [newcell] = New_event(Told)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
+datetime.setDefaultFormats('default','yyyy-MM-dd hh:mm:ss');
 while true
-    %   Detailed explanation goes here
     while true
         prompt = 'What is the event?: ';
         Event = input(prompt,'s');
@@ -110,6 +110,6 @@ while true
             break;
         end
 end
-    newcell={Event,Year,Month,Day,Hour,Minutes};
+    newcell={Event,t2};
 end
 
