@@ -23,13 +23,20 @@ while true
         clc
         fprintf("No data saved\n");
         continue;
-    elseif (str == "new") && exist('Timer.txt','file')
+    elseif (str == "new") && exist('Timer.txt','file') && exist('Told','var')
         T=[Told;New_event(Told)];
         writetable(T,'Timer.txt');
         writetable(T,'Timer.xlsx');
         T = readtable('Timer.txt');
         clc
         continue;
+    elseif (str == "new") && exist('Timer.txt','file') && (exist('Told','var')==0)
+        T=[T;New_event(T)];
+        writetable(T,'Timer.txt');
+        writetable(T,'Timer.xlsx');
+        T = readtable('Timer.txt');
+        clc
+    continue;
     elseif (str == "new") && (exist('Timer.txt','file')==0)
         T=new_table();
         writetable(T,'Timer.txt');

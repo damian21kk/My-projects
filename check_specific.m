@@ -19,7 +19,7 @@ datetime.setDefaultFormats('default','yyyy-MM-dd hh:mm:ss');
         end
         Told.Properties.RowNames = Told.Event;
         t1 = datetime('now');
-        t2 = datetime(table2array(Told(str,'Year')),table2array(Told(str,'Month')),table2array(Told(str,'Day')),table2array(Told(str,'Hour')),table2array(Told(str,'Minutes')),0);
+        t2 = datetime(table2array(Told(str,'Date')));
         dt = between(t1,t2); 
         disp(dt);
 end
