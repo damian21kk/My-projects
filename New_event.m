@@ -15,14 +15,18 @@ while true
     end
     A=strcmp(Event,Told.Event);
     if all(A==0)
-        break;        
+        break;
+    else
+        fprintf("This event already exists\n");
     end
 end
 while true
         while true
             prompt = '\nWhat year?: ';
             Year = input(prompt);
-            if Year<0
+            if isempty(Year)
+                continue;
+            elseif Year<0
                 fprintf('Year cannot be negative');
                 continue;
             else 
@@ -32,7 +36,9 @@ while true
         while true
             prompt = '\nWhat month?: ';
             Month = input(prompt);
-            if Month <1
+            if isempty(Month)
+                continue;
+            elseif Month <1
                 fprintf('Month cannot be less than 1');
                 continue;
             elseif Month > 12
@@ -45,7 +51,9 @@ while true
         while true
             prompt = '\nWhat day?: ';
             Day = input(prompt);
-            if Day<1
+            if isempty(Day)
+                continue;
+            elseif Day<1
                 fprintf('Day cannot be less than 1');
                 continue;
             elseif Month==1 && Day > 31 || Month==3 && Day > 31 || Month==5 && Day > 31 || Month==8 && Day > 31 || Month==10 && Day > 31 || Month==12 && Day > 31
@@ -67,7 +75,9 @@ while true
         while true
             prompt = '\nAt what time (hour)?: ';
             Hour = input(prompt);
-            if Hour <0
+            if isempty(Hour)
+                continue;
+            elseif Hour <0
                 fprintf('Hour cannot be negative');
                 continue;
             elseif Hour > 23
@@ -80,7 +90,9 @@ while true
         while true
             prompt = '\nAt what time (minutes)?: ';
             Minutes = input(prompt);
-            if Minutes <0
+            if isempty(Minutes)
+                continue;
+            elseif Minutes <0
                 fprintf('Minutes cannot be negative');
                 continue;
             elseif Minutes > 59
