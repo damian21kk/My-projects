@@ -17,16 +17,8 @@ while true
         clc
         fprintf("Wrong command, please try again!\n");
         continue;
-    elseif (str == "delete") && exist('Timer.txt','file')
-        delete Timer.txt;
-        delete Timer.xlsx;
-        clear;
-        clc
-        continue;
-    elseif (str == "delete") && (exist('Timer.txt','file')==0)
-        clc
-        fprintf("No data saved\n");
-        continue;
+    elseif (str == "delete")
+        delete_function();
     elseif (str == "new") && exist('Timer.txt','file') && exist('Told','var')
         T=[Told;New_event(Told)];
         writetable(T,'Timer.txt');
