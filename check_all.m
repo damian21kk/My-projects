@@ -14,8 +14,7 @@ n = size(Told);
                 t1 = datetime('now');
                 t2 = datetime(table2array(Told(n,2)));
                 dt = between(t1,t2); 
-                disp(table2array(Told(n,1)),':' dt);
-                
+                fprintf(“%s		%s\n”, table2array(Told(n,1)), dt);                
         end;
         
 end
