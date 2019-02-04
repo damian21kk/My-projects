@@ -5,16 +5,16 @@ function [] = check_all(Told)
 
 datetime.setDefaultFormats('default','yyyy-MM-dd hh:mm:ss');
 
+clc;
 fprintf("Time to the following events:\n");
 
 n = size(Told);
 
-        forpar 1:n 
+        parfor (i = 1:n(1)) 
         
                 t1 = datetime('now');
-                t2 = datetime(table2array(Told(n,2)));
+                t2 = datetime(table2array(Told(i,2)));
                 dt = between(t1,t2); 
-                fprintf(“%s		%s\n”, table2array(Told(n,1)), dt);                
-        end;
-        
+                fprintf("%s		%s\n", char(table2array(Told(i,1))), dt);      
+        end
 end
