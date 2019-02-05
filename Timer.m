@@ -31,17 +31,17 @@ while true
         fprintf("Wrong command, please try again!\n");
         continue;
     
-    elseif(str == "save") && (exists('Told','var')==0) && (exists('T','var')==0)
+    elseif (str == "save") && (exist('Told','var')==0) && (exist('T','var')==0)
        
         clc;
         fprintf("No data to be saved!\n");
         
-    elseif(str == "save") && exists('Told','var')
+    elseif (str == "save") && exist('Told','var')
        
         save_function(Told);
         clc;
         
-    elseif(str == "save") && (exists('Told','var')==0)
+    elseif(str == "save") && (exist('Told','var')==0)
         
         save_function(T);
         clc;

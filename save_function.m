@@ -3,9 +3,11 @@ function [] = save_function(T)
 %   Detailed explanation goes here
 while true
     
-    prompt = "What is the name of the file?\n";
-    str = input(prompt, 's');
-    if (exists(prompt+'.xlsx','file')~=0)
+    prompt = 'What is the name of the file?\n';
+    str = input(prompt,'s');
+    filename= str + ".xlsx";
+    
+    if (exist(filename,'file')~=0)
         
         fprintf("This file already exists\n");
         continue;
@@ -18,7 +20,7 @@ while true
 
 end
 
-writetable(T, str+'.xlsx');
+writetable(T, filename);
 
 end
 
