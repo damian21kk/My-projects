@@ -1,6 +1,7 @@
 function [] = save_function(T)
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
+%save_funtion saves the data to a file named by the user
+%   The data is saved in a spreadsheet
+
 while true
     
     prompt = 'What is the name of the file?\n';
