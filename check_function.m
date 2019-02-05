@@ -10,8 +10,8 @@ function [] = check_function(T)
 
             if (isempty(str)) || (str ~= "show") && (str ~= "specific") && (str ~= "all")
 
-                clc
-                fprintf('Wrong command, please try again!\n')
+                clc;
+                fprintf('Wrong command, please try again!\n');
                 continue;
 
             elseif (str == "show")
