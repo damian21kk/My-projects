@@ -83,55 +83,16 @@ while true
         fprintf('No data saved\n');
         continue;
 
-    elseif (str == "check") && exist('Timer.txt','file')
+    elseif (str == "check") && (exist('T','var')==0)
 
-        while true
-
-            prompt = 'What do you want to do? show events[show], check all events [all], check specific events[specific]: ';
-            str = input(prompt,'s');
-
-            if (isempty(str)) || (str ~= "show") && (str ~= "specific") && (str ~= "all")
-
-                clc
-                fprintf('Wrong command, please try again!\n')
-                continue;
-
-            elseif (str == "show") && (exist('T','var')==0)
-
-                disp(Told);
-                break;
-
-            elseif (str == "specific") && (exist('T','var')==0)
-
-               check_specific(Told);
-               break;
-
-            elseif (str == "all") && (exist('T','var')==0)
-
-               check_all(Told);
-               break;
-
-            elseif (str == "show") && (exist('T','var')~=0)
-
-                disp(T);
-                break;
-
-            elseif (str == "specific") && (exist('T','var')~=0)
-
-               check_specific(T);
-               break;
-
-            elseif (str == "all") && (exist('T','var')~=0)
-
-               check_all(T);
-               break;
-
-            end
-
-        end
-
+        check_function(Told);
         continue;
 
-    end
+    elseif (str == "check") && (exist('T','var')~=0)
 
+        check_function(T);
+        continue;
+        
+    end
+    
 end
