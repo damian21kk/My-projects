@@ -1,6 +1,7 @@
 function [] = check_function(T)
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
+%check_function allows the user to check the saved data
+%   This function allows the user to see all data, see the time remaining
+%   to all events or to just a specific one chosen by him/her.
 
         while true
 
