@@ -6,8 +6,12 @@ while true
     prompt = 'What is the name of the file?\n';
     str = input(prompt,'s');
     filename= str + ".xlsx";
-    
-    if (exist(filename,'file')~=0)
+    if isempty(str)
+        
+        fprintf("Please give the name of the file!\n");
+        continue;
+        
+    elseif (exist(filename,'file')~=0)
         
         fprintf("This file already exists\n");
         continue;

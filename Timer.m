@@ -12,7 +12,13 @@ while true
     prompt = 'What do you want to do? \nNew event[new], Check event[check], Save Data as [save], Delete data[delete], Exit the program[exit]:\n ';
     str = input(prompt,'s');
 
-    if (str == "exit")
+    if (isempty(str)) || (str ~= "save") && (str ~= "exit") && (str ~= "check") && (str ~= "new") && (str ~= "delete")
+
+        clc
+        fprintf("Wrong command, please try again!\n");
+        continue;
+    
+    elseif (str == "exit")
 
         if exit_function()==true
   
@@ -25,12 +31,6 @@ while true
   
         end
 
-    elseif (isempty(str)) || (str ~= "save") && (str ~= "exit") && (str ~= "check") && (str ~= "new") && (str ~= "delete")
-
-        clc
-        fprintf("Wrong command, please try again!\n");
-        continue;
-    
     elseif (str == "save") && (exist('Told','var')==0) && (exist('T','var')==0)
        
         clc;
