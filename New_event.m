@@ -49,9 +49,10 @@ while true
 
             if isempty(Year)
 
-                continue;
+						fprintf(“Please give the year!\n”);
+						continue;
 
-            elseif Year<0
+            elseif Year < 0
 
                 fprintf('Year cannot be negative');
                 continue;
@@ -71,9 +72,10 @@ while true
 
             if isempty(Month)
 
-                continue;
+						fprintf(“Please give the month!\n”);
+						continue;
 
-            elseif Month <1
+            elseif Month < 1
 
                 fprintf('Month cannot be less than 1');
                 continue;
@@ -98,9 +100,10 @@ while true
 
             if isempty(Day)
 
-                continue;
+						fprintf(“Please give the day!\n”);
+						continue;
 
-            elseif Day<1
+            elseif Day < 1
 
                 fprintf('Day cannot be less than 1');
                 continue;
@@ -115,12 +118,12 @@ while true
                 fprintf('Day cannot be greater than 30\n');
                 continue;
 
-            elseif Month==2&& rem(Year,4)==0 && Day > 29
+            elseif Month==2 && rem(Year,4)==0 && Day > 29
 
                 fprintf('Day cannot be greater than 29\n');
                 continue;
 
-            elseif Month==2&& rem(Year,4)~=0 && Day > 28
+            elseif Month==2 && rem(Year,4)~=0 && Day > 28
 
                 fprintf('Day cannot be greater than 29\n');
                 continue;
@@ -140,9 +143,10 @@ while true
 
             if isempty(Hour)
 
-                continue;
+						fprintf(“Please give the hour!\n”);
+						continue;
 
-            elseif Hour <0
+            elseif Hour < 0
 
                 fprintf('Hour cannot be negative');
                 continue;
@@ -167,9 +171,10 @@ while true
 
             if isempty(Minutes)
 
-                continue;
+						fprintf(“Please give the minutes!\n”);
+						continue;
 
-            elseif Minutes <0
+            elseif Minutes < 0
 
                 fprintf('Minutes cannot be negative');
                 continue;
@@ -194,7 +199,7 @@ while true
         dt = t2-t1;
         sec=seconds(dt);
 
-        if sec>0
+        if sec > 0
 
             break;
 
@@ -202,7 +207,7 @@ while true
 
 end
 
-    newcell={Event,t2};
+    newcell = {Event,t2};
 
 end
 
