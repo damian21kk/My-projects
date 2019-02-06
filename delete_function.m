@@ -2,11 +2,11 @@ function [] = delete_function()
 %delete_function deletes data saved in Timer.txt, Timer.xlsx and in the workspace
 %   At the moment it deletes all data but later it will be available to delete only one event or past events
 
-%checing if there is any data to be deleted
+%checking if there is any data to be deleted
 
     if (exist('Timer.txt','file')==0)
 
-        clc
+        clc;
         fprintf("No data saved\n");
         return;
 
@@ -19,12 +19,12 @@ function [] = delete_function()
             prompt = 'Are you sure you want to delete? Yes[Y]/No[N]:\n ';
             str = input(prompt,'s');
             
-            if (isempty(str))||(str~='Y') && (str~='N')
+            if (isempty(str))||(strcmp(str,'Y')==0) && (strcmp(str,'N')==0)
             
                 fprintf("Wrong command, please try again!\n");
                 continue;
             
-            elseif str=='Y'
+            elseif (strcmp(str,'Y')==1)
             
                 clc;
                 clear;
@@ -32,7 +32,7 @@ function [] = delete_function()
                 delete Timer.txt;
                 break;
             
-            elseif str=='N'
+            elseif (strcmp(str,'N')==1)
             
                 clc;
                 break;
