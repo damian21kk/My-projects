@@ -4,25 +4,28 @@ function [T] = new_table()
 
 datetime.setDefaultFormats('default','yyyy-MM-dd hh:mm:ss');
 
+
 while true
 
-    prompt = 'What is the event?: ';
-    Event = input(prompt,'s');
+	prompt = 'What is the event?: ';
+	Event = input(prompt,'s');
 
-    if isempty(Event)
+	if isempty(Event)
 
-        fprintf('Please give the name of the event!\n');
-        continue;
+			fprintf('Please give the name of the event!\n');
+		continue;
 
-    else
+	else
 
-        break;
+		break;
 
-    end
+	end
 
 end
 
 while true
+
+%checking if the date given by the user is valid, ex. the day is not negative or >31
 
         while true
 
@@ -31,9 +34,10 @@ while true
 
             if isempty(Year)
 
-                continue;
+						fprintf(“Please give the year!\n”);
+						continue;
 
-            elseif Year<0
+            elseif Year < 0
 
                 fprintf('Year cannot be negative');
                 continue;
@@ -53,9 +57,10 @@ while true
 
             if isempty(Month)
 
-                continue;
+						fprintf(“Please give the month!\n”);
+						continue;
 
-            elseif Month <1
+            elseif Month < 1
 
                 fprintf('Month cannot be less than 1');
                 continue;
@@ -80,9 +85,10 @@ while true
 
             if isempty(Day)
 
-                continue;
+						fprintf(“Please give the day!\n”);
+						continue;
 
-            elseif Day<1
+            elseif Day < 1
 
                 fprintf('Day cannot be less than 1');
                 continue;
@@ -97,12 +103,12 @@ while true
                 fprintf('Day cannot be greater than 30\n');
                 continue;
 
-            elseif Month==2&& rem(Year,4)==0 && Day > 29
+            elseif Month==2 && rem(Year,4)==0 && Day > 29
 
                 fprintf('Day cannot be greater than 29\n');
                 continue;
 
-            elseif Month==2&& rem(Year,4)~=0 && Day > 28
+            elseif Month==2 && rem(Year,4)~=0 && Day > 28
 
                 fprintf('Day cannot be greater than 29\n');
                 continue;
@@ -122,9 +128,10 @@ while true
 
             if isempty(Hour)
 
-                continue;
+						fprintf(“Please give the hour!\n”);
+						continue;
 
-            elseif Hour <0
+            elseif Hour < 0
 
                 fprintf('Hour cannot be negative');
                 continue;
@@ -149,9 +156,10 @@ while true
 
             if isempty(Minutes)
 
-                continue;
+						fprintf(“Please give the minutes!\n”);
+						continue;
 
-            elseif Minutes <0
+            elseif Minutes < 0
 
                 fprintf('Minutes cannot be negative');
                 continue;
@@ -169,12 +177,14 @@ while true
 
         end
 
+%checking if the event is not in a past
+
         t1 = datetime('now');
         t2 = datetime(Year,Month,Day,Hour,Minutes,0);
         dt = t2-t1;
         sec=seconds(dt);
 
-        if sec>0
+        if sec > 0
 
             break;
 
