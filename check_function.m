@@ -8,28 +8,28 @@ function [] = check_function(T)
             prompt = 'What do you want to do? show events[show], check all events [all], check specific events[specific]: ';
             str = input(prompt,'s');
 
-            if (isempty(str)) || (str ~= "show") && (str ~= "specific") && (str ~= "all")
+            if (isempty(str)) || (strcmp(str,’show’)==0) && (strcmp(str,’specific’)==0) && (strcmp(str,’all’)==0)
 
                 clc;
                 fprintf('Wrong command, please try again!\n');
                 continue;
 
-            elseif (str == "show")
+            elseif (strcmp(str,’show’)==1)
                 
                 disp(T);
                 break;
 
-            elseif (str == "all")
+            elseif (strcmp(str,’all’)==1)
                 
                check_all(T);
                break;
 
-            elseif (str == "specific")
+            elseif (strcmp(str,’specific’)==1)
 
                check_specific(T);
                break;
 
-            elseif (str == "all")
+            elseif (strcmp(str,’all’)==1)
 
                check_all(T);
                break;
