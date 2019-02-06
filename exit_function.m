@@ -7,18 +7,18 @@ function [choice] = exit_function()
             prompt = 'Are you sure you want to exit? Yes[Y]/No[N]:\n ';
             str = input(prompt,'s');
          
-            if (isempty(str))||(str~='Y') && (str~='N')
+            if (isempty(str))|| (strcmp(str,'Y')==0) && (strcmp(str,'N')==0)
    
                 fprintf("Wrong command, please try again!\n");
                 continue;
    
-            elseif str=='Y'
+            elseif (strcmp(str,'Y')==1)
    
                 clc;
                 choice=true;
                 break;
    
-            elseif str=='N'
+            elseif (strcmp(str,'N')==1)
    
                 choice=false;
                 break;
