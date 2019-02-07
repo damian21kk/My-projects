@@ -19,7 +19,7 @@ n = size(T);
 							
 							T(i,:) = [];
 						
-						end;
+                        end
         
         end
 end

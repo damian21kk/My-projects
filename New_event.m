@@ -49,7 +49,7 @@ while true
 
             if isempty(Year)
 
-						fprintf(“Please give the year!\n”);
+						fprintf("Please give the year!\n");
 						continue;
 
             elseif Year < 0
@@ -72,7 +72,7 @@ while true
 
             if isempty(Month)
 
-						fprintf(“Please give the month!\n”);
+						fprintf("Please give the month!\n");
 						continue;
 
             elseif Month < 1
@@ -100,7 +100,7 @@ while true
 
             if isempty(Day)
 
-						fprintf(“Please give the day!\n”);
+						fprintf("Please give the day!\n");
 						continue;
 
             elseif Day < 1
@@ -143,7 +143,7 @@ while true
 
             if isempty(Hour)
 
-						fprintf(“Please give the hour!\n”);
+						fprintf("Please give the hour!\n");
 						continue;
 
             elseif Hour < 0
@@ -171,7 +171,7 @@ while true
 
             if isempty(Minutes)
 
-						fprintf(“Please give the minutes!\n”);
+						fprintf("Please give the minutes!\n");
 						continue;
 
             elseif Minutes < 0
