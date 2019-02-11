@@ -5,7 +5,7 @@ function [] = check_function(T)
 
         while true
 
-            prompt = 'What do you want to do? show events[show], check all events [all], check specific events[specific]: ';
+            prompt = 'What do you want to do?\n show events[show], check all events [all], check specific events[specific]: ';
             str = input(prompt,'s');
 
             if (isempty(str)) || (strcmp(str,'show')==0) && (strcmp(str,'specific')==0) && (strcmp(str,'all')==0)

@@ -16,27 +16,45 @@ function [] = delete_function()
 
     while true
     
-            prompt = 'Are you sure you want to delete? Yes[Y]/No[N]:\n ';
+            prompt = 'What do you want to delete? All data[all], Past Data[past]:\n ';
             str = input(prompt,'s');
             
-            if (isempty(str))||(strcmp(str,'Y')==0) && (strcmp(str,'N')==0)
+            if (isempty(str))||(strcmp(str,'all')==0) && (strcmp(str,'past')==0)
             
                 fprintf("Wrong command, please try again!\n");
                 continue;
+                 
+            elseif (strcmp(str,'all')==1)
             
-            elseif (strcmp(str,'Y')==1)
-            
+                prompt = 'Are you sure you want to delete? Yes[Y]/No[N]:\n ';
+                str = input(prompt,'s');
+
+                if (isempty(str))||(strcmp(str,'Y')==0) && (strcmp(str,'N')==0)
+
+                    fprintf("Wrong command, please try again!\n");
+                    continue;
+
+                elseif (strcmp(str,'Y')==1)
+
+                    clc;
+                    clear;
+                    delete Timer.xlsx;
+                    delete Timer.txt;
+                    break;
+
+                elseif (strcmp(str,'N')==1)
+
+                    clc;
+                    break;
+
+                end
+                
+            elseif (strcmp(str,'past')==1)    
+                
+                check_past();
                 clc;
-                clear;
-                delete Timer.xlsx;
-                delete Timer.txt;
                 break;
-            
-            elseif (strcmp(str,'N')==1)
-            
-                clc;
-                break;
-            
+                
             end
             
     end
